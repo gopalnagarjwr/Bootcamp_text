@@ -1,0 +1,482 @@
+1)
+Problem Statement
+You are given a function,
+Int MaxExponents (int a , int b);
+You have to find and return the number between ‘a’ and ‘b’ ( range inclusive on both ends)
+which has the maximum exponent of 2.
+The algorithm to find the number with maximum exponent of 2 between the given range is
+1.Loop between ‘a’ and ‘b’. Let the looping variable be ‘i’.
+2.Find the exponent (power) of 2 for each ‘i’ and store the number with maximum exponent
+of 2 so faqrd in a variable , let say ‘max’. Set ‘max’ to ‘i’ only if ‘i’ has more exponent of 2
+than ‘max’.
+3.Return ‘max’.
+Assumption: a <b
+Note: If two or more numbers in the range have the same exponents of 2 , return the small
+number.
+Example
+Input:
+7
+12
+Output:
+8
+Explanation:
+Exponents of 2 in:
+7-0
+8-3
+9-0
+10-1
+11-0
+12-2
+Hence maximum exponent if two is of 8.
+
+Ans:-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);
+	public static int MaxExponents (int a , int b){
+		  int c=0;
+		  int r=0;
+		  int max=Integer.MIN_VALUE;
+		  for(int i=a; i<=b; i++) {
+			  int x=i;
+			  while(x%2==0) {
+				  x=x/2;
+				  c++;
+			  }
+			  if(max<c) {
+				  max=c;
+				  r=i;
+				  c=0;
+			  }
+			  else {
+				  c=0;
+			  } 
+		  }
+		  return r;  
+	}  
+	public static void main(String[] args) {
+	     int a=sc.nextInt();
+	     int b=sc.nextInt();
+	     
+	     System.out.print(MaxExponents(a,b));
+   }
+}
+
+
+
+2)
+Problem Statement
+You are required to implement the following function:
+Int Calculate(int m, int n);
+The function accepts 2 positive integer ‘m’ and ‘n’ as its arguments.You are required to
+calculate the sum of numbers divisible both by 3 and 5, between ‘m’ and ‘n’ both inclusive
+and return the same.
+Note
+0 < m <= n
+Example
+Input:
+m : 12
+n : 50
+Output
+90
+Explanation:
+The numbers divisible by both 3 and 5, between 12 and 50 both inclusive are {15, 30, 45}
+and their sum is 90.
+Sample Input
+m : 100
+n : 160
+Sample Output
+510
+
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);
+	public static int Calculate(int m, int n){
+		int sum=0;
+		if(m<=n) {
+		for(int i=m; i<=n; i++) {
+			if(i%3==0&&i%5==0) {
+				sum+=i;
+			}
+		} 
+		}else {
+			return 0;
+		}
+		return sum;
+	}  
+	public static void main(String[] args) {
+	     int a=sc.nextInt();
+	     int b=sc.nextInt();
+	     
+	     System.out.print(Calculate(a,b));
+   }
+}
+
+
+
+3)
+Problem Statement
+You are required to input the size of the matrix then the elements of matrix, then you have to
+divide the main matrix in two sub matrices (even and odd) in such a way that element at 0
+index will be considered as even and element at 1st index will be considered as odd and so
+on. then you have sort the even and odd matrices in ascending order then print the sum of
+second largest number from both the matrices.
+Example
+enter the size of array : 5
+enter element at 0 index : 3
+
+enter element at 1 index : 4
+enter element at 2 index : 1
+enter element at 3 index : 7
+enter element at 4 index : 9
+Sorted even array : 1 3 9
+Sorted odd array : 4 7
+7
+
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);
+	public static void matrix(int s){
+		 int []arr=new int [s];
+		 for(int i=0; i<s; i++) {
+			 arr[i]=sc.nextInt();
+		 }
+		 String o="";
+		 String e="";
+		 int max=0;
+		 int smax=0;
+		 for(int i=0; i<arr.length; i++) {
+			 if(i%2==0) {
+				 e+=arr[i];
+				 if(max<arr[i]) {
+					 smax=max;
+					 max=arr[i];
+				 }
+			 }
+			 else {
+				 o+=arr[i];
+				 if(max<arr[i]) {
+					 smax=max;
+					 max=arr[i];
+				 }
+			 }
+		 }
+		 int [] even=new int [e.length()];
+		 int [] odd=new int [o.length()];
+		 for(int i=0; i<even.length; i++) {
+			 even[i]=Integer.parseInt(String.valueOf(e.charAt(i)));
+		 }
+		 for(int i=0; i<odd.length; i++) {
+			 odd[i]=Integer.parseInt(String.valueOf(o.charAt(i)));
+		 }
+		 Arrays.sort(odd);
+		 Arrays.sort(even);
+		 System.out.println(Arrays.toString(even));
+		 System.out.println(Arrays.toString(odd));
+		 System.out.println(smax);
+	}  
+	public static void main(String[] args) {
+	     int a=sc.nextInt();
+	     matrix(a);
+   }
+}
+
+
+4)
+Instructions: You are required to write the code. You can click on compile and run anytime to
+check compilation/execution status. The code should be logically/syntactically correct.
+Problem: Write a program in C to display the table of a number and print the sum of all the
+multiples in it.
+Test Cases:
+Test Case 1:
+Input:
+5
+Expected Result Value:
+5, 10, 15, 20, 25, 30, 35, 40, 45, 50
+275
+
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);
+	public static int tableSum(int c){
+		int sum=0; 
+		      for(int i=1; i<=10; i++) {
+		    	   sum+=i*c;
+		      }
+		      return sum;
+	}  
+	public static void main(String[] args) {
+	     int a=sc.nextInt();
+	     System.out.println(tableSum(a));
+   }
+}
+
+
+5)
+Find the maximum value and its index in the array
+Problem Statement :
+
+You are given a function, void MaxInArray(int arr[], int length); The function accepts
+an integer array ‘arr’ of size ‘length’ as its argument. Implement the function to find
+the maximum element of the array and print the maximum element and its index to
+the standard output
+
+(STDOUT). The maximum element and its index should be printed in separate lines.
+
+Note:
+
+a)Array index starts with 0
+b)Maximum element and its index should be separated by a line in the output
+c)Assume there is only 1 maximum element in the array
+d)Print exactly what is asked, do not print any additional greeting messages
+
+Example:
+
+Input:
+
+23 45 82 27 66 12 78 13 71 86
+
+Output:
+
+86
+
+9
+
+Explanation:
+
+86 is the maximum element of the array at index 9
+
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);
+	public static void MaxInArray(int arr[]){
+		int index=0;
+		int max=Integer.MIN_VALUE;
+		for(int i=0; i<arr.length; i++) {
+			if(max<arr[i]) {
+				max=arr[i];
+				index=i;
+			}
+		}
+		System.out.println(max);
+		System.out.println(index);          
+	}  
+	public static void main(String[] args) {
+	    int [] arr= {23 ,45 ,82 ,27 ,66 ,12 ,78 ,13 ,71 ,86};
+	     MaxInArray(arr);
+   }
+}
+
+
+6)
+Problem Statement
+
+Alex works at a clothing store. There is a large pile of socks that must be paired by
+color for sale. Given an array of integers representing the color of each sock,
+determine how many pairs of socks with matching colors there are.
+
+For example, there are n=7 socks with colors ar = {1,2,1,2,1,3,2}. There is one pair
+of color 1 and one of color 2. There are three odd socks left, one of each color. The
+number of pairs is 2.
+Function Description
+Complete the sockMerchant function in the editor below. It must return an integer
+representing the number of matching pairs of socks that are available.
+sockMerchant has the following parameter(s):
+n: the number of socks in the pile
+ar: the colors of each sock
+
+Input Format
+The first line contains an integer n, the number of socks represented in ar.
+The second line contains n space-separated integers describing the colors
+ar[i] of the socks in the pile.
+
+Constraints
+1 <= n <= 100
+1 <= ar[i] <= 100 & 0 <= i < n
+
+Output Format
+Return the total number of matching pairs of socks that Alex can sell.
+
+Sample Input
+9
+10 20 20 10 10 30 50 10 20
+Sample Output
+3
+
+Explanation
+Alex can match 3 pairs of socks i.e 10-10, 10-10, 20-20
+while the left out socks are 50, 60, 20
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);
+	public static int Pair(int []arr){
+		int c=0;
+		    Arrays.sort(arr);
+	          for(int i=0;i<arr.length-1; i++) {  
+	        	   if(arr[i]==arr[i+1]) {
+	        		   c++;
+	        		   i++;
+	        	   }
+	          }
+	          return c;
+	}  
+	public static void main(String[] args) {
+	      int []arr={10 ,20 ,20 ,10 ,10 ,30 ,50 ,10 ,20};
+		  System.out.print(Pair(arr));
+   }
+}
+
+
+
+7)
+Problem Statement – To speed up his composition of generating unpredictable rhythms,
+Blue Bandit wants the list of prime numbers available in a range of numbers.Can you help
+him out?
+Write a java program to print all prime numbers in the interval [a,b] (a and b, both inclusive).
+Note
+Input 1 should be lesser than Input 2. Both the inputs should be positive.
+Range must always be greater than zero.
+If any of the condition mentioned above fails, then display “Provide valid input”
+Use a minimum of one for loop and one while loop
+Sample Input 1:
+2
+15
+Sample Output 1:
+2 3 5 7 11 13
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);
+	public static void Prime(int a,int b){
+		   int f=0;
+	             for(int i=a; i<=b; i++) {
+	            	 for(int j=2; j<=i/2; j++) {
+	            		 if(i%j==0) {
+	            			 f=1;
+	            		 }
+	            	 }
+	            	 if(f==0){
+	            		 System.out.print(i+" ");
+	            	 }
+	            	 else {
+	            		 f=0;
+	            	 }
+	             }
+	}  
+	public static void main(String[] args) {
+	   int a=sc.nextInt();
+	   int b=sc.nextInt();
+	    Prime(a,b);
+   }
+}
+
+
+8)
+Problem Statement – Raj wants to know the maximum marks scored by him in each
+semester. The mark should be between 0 to 100 ,if goes beyond the range display “You
+have entered invalid mark.”
+Sample Input 1:
+Enter no of semester:
+3
+Enter no of subjects in 1 semester:
+3
+Enter no of subjects in 2 semester:
+4
+Enter no of subjects in 3 semester:
+2
+Marks obtained in semester 1:
+50
+60
+70
+Marks obtained in semester 2:
+90
+98
+76
+67
+Marks obtained in semester 3:
+89
+76
+
+Sample Output 1:
+Maximum mark in 1 semester:70
+Maximum mark in 2 semester:98
+
+Maximum mark in 3 semester:89
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);
+ 
+	public static void main(String[] args) {
+		System.out.print("Enter no of semester: ");
+	      int ns=sc.nextInt();
+	     int [] arr=new int [ns];
+	     int c=0;
+	      for(int i=0; i<ns; i++) {
+	    	  System.out.print("Enter no of subjects in "+(i+1)+" semester: ");
+		      int sn=sc.nextInt();
+		      arr[i]=sn;  
+		      c+=sn;
+	      }
+	      int [] arr2=new int [c];
+	      int x=0;
+	      for(int i=0; i<ns; i++) {
+	    	  for(int j=0; j<arr[i]; j++) {
+	    			System.out.print("Marks obtained in semester "+i+1);
+	    			 arr2[x++]=sc.nextInt();
+	    	  }
+	      }
+	      x=0;
+	      int max=0;
+	      for(int i=0; i<ns; i++) {
+	    	  for(int j=0; j<arr[i]; j++) {
+	    			if(max<arr2[x++]) {
+	    				max=arr2[x-1];
+	    			}
+	    	  }
+	    	  System.out.println("Maximum mark in "+(i+1)+" semester: "+max);
+	    	  max=0;
+	      }
+	      
+   }
+}
+
+
+
+
+
+
