@@ -1,0 +1,536 @@
+1)
+Jack is always excited about sunday. It is favourite day, when he gets to play all day. And
+goes to cycling with his friends.
+So every time when the months starts he counts the number of sundays he will get to enjoy.
+Considering the month can start with any day, be it Sunday, Monday.... Or so on.
+Count the number of Sunday jack will get within n number of days.
+Example 1:
+Input
+mon-> input String denoting the start of the month.
+13 -> input integer denoting the number of days from the start of the month.
+Output :
+2 -> number of days within 13 days.
+Explanation:
+The month start with mon(Monday). So the upcoming sunday will arrive in next 6 days. And
+then next Sunday in next 7 days and so on.
+Now total number of days are 13. It means 6 days to first sunday and then remaining 7 days
+will end up in another sunday. Total 2 sundays may fall within 13 days.
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);	
+ 
+	public static void main(String[] args) {
+	    String s=sc.next();
+	    int d=sc.nextInt();
+	      int c=0; 
+	      String [] arr= {"sun","mon","teu","wed","thus","fri","set"};
+	        for(int i=0; i<arr.length; i++) {
+	        	if(arr[i].equals(s)) {
+	        		int y=arr.length-(i+1);
+	        		while(d!=0&&d>=6) {
+	        			d=d-y;
+	        			y=6;
+	        			c++;
+	        		}
+	        	
+	        	}
+	        }
+	        System.out.print(c);
+   }
+}
+
+
+
+2)
+A furnishing company is manufacturing a new collection of curtains. The curtains are of two
+colors aqua(a) and black (b). The curtains color is represented as a string(str) consisting of
+a’s and b’s of length N. Then, they are packed (substring) into L number of curtains in each
+box. The box with the maximum number of ‘aqua’ (a) color curtains is labeled. The task here
+is to find the number of ‘aqua’ color curtains in the labeled box.
+Note :
+If ‘L’ is not a multiple of N, the remaining number of curtains should be considered as a
+substring too. In simple words, after dividing the curtains in sets of ‘L’, any curtains left will be
+another set(refer example 1)
+Example 1:
+Input :
+bbbaaababa -> Value of str
+
+3 -> Value of L
+Output:
+3 -> Maximum number of a’s
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);	
+	public static void main(String[] args) {
+		      String s=sc.nextLine();
+		      String n="";
+		      int c=0;
+		      
+		      int l=sc.nextInt();
+		      int max=0;
+		      for(int i=0; i<s.length(); i++) {
+		    	   n+=s.charAt(i);
+		    	   if(n.length()==l) {
+		    		   for(int j=0; j<n.length(); j++) {
+		    			   if(n.charAt(j)=='a') {
+		    				   c++;
+		    			   }
+		    		   }
+		    		   n="";
+		    	   }
+		    	   if(max<c) {
+		    		   max=c;
+		    		   c=0;
+		    	   }
+		      }
+		      System.out.print(max);
+   }
+}
+
+
+
+3)
+Problem Statement – Given a string S(input consisting) of ‘*’ and ‘#’. The length of the string
+is variable. The task is to find the minimum number of ‘*’ or ‘#’ to make it a valid string. The
+string is considered valid if the number of ‘*’ and ‘#’ are equal. The ‘*’ and ‘#’ can be at any
+position in the string.
+Note : The output will be a positive or negative integer based on number of ‘*’ and ‘#’ in the
+input string.
+a)(*>#): positive integer
+b)(#>*): negative integer
+c)(#=*): 0
+Example 1:
+Input 1:
+###*** -> Value of S
+Output :
+0 → number of * and # are equal
+
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);	
+	public static void main(String[] args) {
+		      String s=sc.nextLine();
+		     int h=0; 
+		     int st=0; 
+		      for(int i=0; i<s.length(); i++) {
+		    	    if(s.charAt(i)=='#') {
+		    	    	h++;
+		    	    }
+		    	    if(s.charAt(i)=='*') {
+		    	    	st++;
+		    	    }
+		      }
+		      System.out.print(st-h);
+   }
+}
+
+
+4)
+The program will recieve 3 English words inputs from STDIN
+a)These three words will be read one at a time, in three separate line
+b)The first word should be changed like all vowels should be replaced by %
+c)The second word should be changed like all consonants should be replaced by #
+d)The third word should be changed like all char should be converted to upper case
+e)Then concatenate the three words and print them
+Other than these concatenated word, no other characters/string should or message should
+be written to STDOUT
+For example if you print how are you then output should be h%wa#eYOU.
+You can assume that input of each word will not exceed more than 5 chars
+
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);	
+	public static void main(String[] args) {
+		      int x=3; 
+		      String n="";
+		      while(x!=0) {
+		    	  String s=sc.nextLine();
+		    	  
+		    	  for(int  i=0; i<s.length(); i++) {
+		    		  if(x==3){
+		    			  if(s.charAt(i)=='i'||s.charAt(i)=='o'||s.charAt(i)=='a'||s.charAt(i)=='u'||s.charAt(i)=='e') {
+		    				  n+="%";
+		    			  }
+		    			  else {
+		    				  n+=s.charAt(i);
+		    			  }
+		    		  }
+		    		  if(x==2){
+		    			  if(s.charAt(i)=='i'||s.charAt(i)=='o'||s.charAt(i)=='a'||s.charAt(i)=='u'||s.charAt(i)=='e') {
+		    				  n+=s.charAt(i);
+		    			  }
+		    			  else {
+		    				n+="#";
+		    			  }
+		    		  }
+		    		 
+		    	  }
+		    	  if(x==1){
+	    			  n+=s.toUpperCase();
+	    		  }
+		    	  x--;
+		    			 
+		      }
+		      System.out.print(n);
+   }
+}
+
+
+6)
+Password Checker
+You are given a function.
+int CheckPassword(char str[], int n);
+The function accepts string str of size n as an argument. Implement the function which
+returns 1 if given string str is valid password else 0.
+str is a valid password if it satisfies the below conditions.
+– At least 4 characters
+– At least one numeric digit
+– At Least one Capital Letter
+– Must not have space or slash (/)
+– Starting character must not be a number
+Assumption:
+Input string will not be empty.
+Example:
+Input 1:
+aA1_67
+
+Input 2:
+a987 abC012
+Output 1:
+1
+Output
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);	
+	public static int CheckPassword(char str[], int n) {
+		int nd=0;
+		int l=0;
+		
+		        for(int i=0; i<n; i++) {
+		        	  if(str[i]>='0'&&str[i]<='9') {
+		        		  nd=1;
+		        	  }
+		        	  if(str[i]>='A'&&str[i]<='Z') {
+		        		  l=1;
+		        	  }
+		        	  if(str[i]==' '||str[i]<='/') {
+		        		  return 0;
+		        	  }
+		        	  if(str[0]>='0'&&str[0]<='9') {
+		        		  return 0;
+		        	  }
+		        }
+		        if(n>=4&&nd==1&&l==1) {
+		        	return 1;
+		        }
+		        return 0;
+	}
+	public static void main(String[] args) {
+		char [] arr= {'a','A','1','_','6','7'};
+		
+		System.out.print(CheckPassword(arr,arr.length));
+   }
+}
+
+
+7)
+Implement the following functions.a
+char*MoveHyphen(char str[],int n);
+The function accepts a string “str” of length ‘n’, that contains alphabets and hyphens (-).
+Implement the function to move all hyphens(-) in the string to the front of the given string.
+NOTE:- Return null if str is null.
+Example :-
+
+Input:
+str.Move-Hyphens-to-Front
+Output:
+—MoveHyphenstoFront
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);	
+	public static String  MoveHyphen(String s){
+		    String n="";
+		      for(int i=0; i<s.length(); i++) {
+		    	  if(s.charAt(i)=='-') {
+		    		  n+='-';
+		    	  }
+		      }
+		      for(int i=0; i<s.length(); i++) {
+		    	  if(s.charAt(i)!='-') {
+		    		  n+=s.charAt(i);
+		    	  }
+		      }
+		      
+		      return  n;
+	}
+	public static void main(String[] args) {
+		 String s=sc.nextLine();
+		
+		System.out.print(MoveHyphen(s));
+   }
+}
+
+
+8)
+Problem Statement
+You are given a function,
+Void *ReplaceCharacter(Char str[], int n, char ch1, char ch2);
+The function accepts a string ‘ str’ of length n and two characters ‘ch1’ and ‘ch2’ as its
+arguments . Implement the function to modify and return the string ‘ str’ in such a way that all
+occurrences of ‘ch1’ in original string are replaced by ‘ch2’ and all occurrences of ‘ch2’ in
+original string are replaced by ‘ch1’.
+Assumption: String Contains only lower-case alphabetical letters.
+Note:
+->Return null if string is null.
+->If both characters are not present in string or both of them are same , then return the string
+unchanged.
+Example:
+Input:
+Str: apples
+ch1:a
+ch2:p
+Output:
+paales
+
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);	
+	public static String ReplaceCharacter(String s , char ch1, char ch2){
+		         String n="";
+		         for(int i=0; i<s.length(); i++) {
+		        	  if(s.charAt(i)==ch1) {
+		        		  n+=ch2;
+		        	  }
+		        	  else if(s.charAt(i)==ch2) {
+		        		  n+=ch1;
+		        	  }
+		        	  else {
+		        		  n+=s.charAt(i);
+		        	  }
+		         }
+		         s=n;
+		         return s;
+	}
+	public static void main(String[] args) {
+		 String s=sc.nextLine();
+		 char a=sc.nextLine().charAt(0);
+		 char b=sc.nextLine().charAt(0);
+		
+		System.out.print(ReplaceCharacter(s,a,b));
+   }
+}
+
+
+
+9)
+Autobiographical Number
+Problem Statement :
+
+An Autobiographical Number is a number N such that the first digit of N represents
+the count of how many zeroes are there in N, the second digit represents the count
+of how many ones are there in N and so on.
+
+You are given a function, def FindAutoCount(n):
+
+The function accepts string “n” which is a number and checks whether the number is
+an autobiographical number or not. If it is, an integer is returned, i.e. the count of
+distinct numbers in ‘n’. If not, it returns 0.
+
+Assumption:
+
+a)The input string will not be longer than 10 characters.
+b)Input string will consist of numeric characters.
+Note:
+
+If string is None return 0.
+
+Example:
+
+Input:
+
+n: “1210”
+
+Output:
+
+3
+
+Explanation:
+
+0th position in the input contains the number of 0 present in input, i.e. 1, in 1st
+position the count of number of 1s in input i.e. 2, in 2nd position the count of 2s in
+input i.e. 1, and in 3rd position the count of 3s i.e. 0, so the number is an
+autobiographical number.
+
+Now unique numbers in the input are 0, 1, 2, so the count of unique numbers is 3. So
+3 is returned.
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);	
+	public static int FindAutoCount(String n){
+		   int f=0; 
+		      String s="";
+		          for(int i=0; i<n.length(); i++) {
+		                   for(int j=0; j<s.length(); j++) {
+		                	   if(s.charAt(j)==n.charAt(i)) {
+		                		   f=1;
+		                	   }
+		                   }
+		                   if(f==0) {
+		                	   s+=n.charAt(i);
+		                   }
+		                   else {
+		                	   f=0;
+		                   }
+		        	 
+		          }
+		          return s.length();
+	}
+	public static void main(String[] args) {
+		 String n=sc.nextLine();
+		System.out.print(FindAutoCount(n));
+   }
+}
+
+
+10)
+Counting Valleys
+Problem Statement
+
+Gary is an avid hiker. He tracks his hikes meticulously, paying close attention to
+small details like topography. During his last hike, he took exactly n steps. For every
+
+step he took, he noted if it was an uphill or a downhill step. Gary’s hikes start and
+end at sea level. We define the following terms:
+
+a)A mountain is a non-empty sequence of consecutive steps above sea level,
+starting with a step up from sea level and ending with a step down to sea level.
+b)A valley is a non-empty sequence of consecutive steps below sea level, starting
+with a step down from sea level and ending with a step up to sea level.
+
+Given Gary’s sequence of up and down steps during his last hike, find and print the
+number of valleys he walked through.
+
+Input Format
+
+The first line contains an integer, , denoting the number of steps in Gary’s hike.
+
+The second line contains a single string of characters. Each character belongs to {U,
+D} (where U indicates a step up and D indicates a step down), and the i(th) cin the
+string describes Gary’s i(th) step during the hike.
+
+Constraints
+
+2 <= N <= 10^6
+
+Output Format
+
+Print a single integer denoting the number of valleys Gary walked through during his
+hike.
+
+Sample Input
+
+8
+
+UDDDUDUU
+
+Sample Output
+
+1
+
+Explanation
+
+If we represent _ as sea level, a step up as / , and a step down as \ , Gary’s hike can
+be drawn as:
+
+_/\ _
+
+\ /
+
+\/\/
+
+It’s clear that there is only one valley there, so we print on a new line
+
+
+Ans :-
+
+
+package p;
+import java.util.*;
+public class P implements implement
+{  
+	static Scanner sc=new Scanner (System.in);	
+	public static int stepsCount(int n){
+		     char [] arr=new char [n];
+		     for(int i=0; i<arr.length; i++) {
+		    	 arr[i]=sc.next().charAt(0);
+		     }
+		     int c=0;
+		     int m=0;
+		     int v=0;;
+		     for(int i=0; i<arr.length; i++) {
+		    	   if(arr[i]=='U') {
+		    		   m++;
+		    		   if(m==0) {
+		    			   c++;
+		    		   }
+		    	 
+		    	   }	
+		    	   else if(arr[i]=='D') {
+		    		    m--;
+		    	   }
+		     }
+		    return c;
+		     
+	}
+	public static void main(String[] args) {
+	    int x=sc.nextInt();
+	    System.out.print(stepsCount(x));
+   }
+}
+
+
+
+
+
+
+
