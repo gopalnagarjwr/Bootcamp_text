@@ -28,6 +28,63 @@ public class P implements implement
 }
 
 
+
+2)
+the product of 1 * 2 * 3 = 6
+Approach:
+To solve this problem efficiently, we can use two auxiliary arrays: leftProducts and
+rightProducts. These arrays will store the products of elements to the left and right of each
+element, respectively.
+a)Compute leftProducts:
+Initialize an array leftProducts of the same length as nums and set leftProducts[0] = 1 since
+there are no elements to the left of the first element.
+Iterate from left to right through nums, updating leftProducts[i] as the product of all elements
+to the left of nums[i].
+
+b)Compute rightProducts:
+Initialize an array rightProducts of the same length as nums and set rightProducts[n-1] = 1
+since there are no elements to the right of the last element.
+Iterate from right to left through nums, updating rightProducts[i] as the product of all
+elements to the right of nums[i].
+
+c)Compute the final result output:
+For each index i, the product of all elements except nums[i] is given by leftProducts[i] *
+rightProducts[i].
+Populate the output array accordingly.
+
+
+Ans :-
+   
+ import java.util.*;
+
+public class Main {
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[n];
+        int leftProduct = 1;
+        for (int i = 0; i < n; i++) {
+            result[i] = leftProduct;
+            leftProduct *= nums[i];
+        }
+        int rightProduct = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            result[i] *= rightProduct;
+            rightProduct *= nums[i];
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        // call
+        Main solution = new Main();
+        int[] nums = { 1, 2, 3, 4 };
+        int[] result = solution.productExceptSelf(nums);
+        System.out.println(Arrays.toString(result));
+    }
+}
+
+
+
 3)
 Problem: Find Peak Element
 Problem Description:
