@@ -1,0 +1,343 @@
+1)
+Rotate Array
+Rotate an array to the right by k steps, where k is non-negative.
+Input: [1, 2, 3, 4, 5, 6, 7], k = 3
+Output: [5, 6, 7, 1, 2, 3, 4]
+
+Ans :-
+
+package p;
+
+import java.util.*;
+ 
+public class P implements implement {
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		int k=sc.nextInt();
+	         int [] arr= {1, 2, 3, 4, 5, 6, 7};
+	         
+	         while(k!=0) {
+	        	 for(int i=arr.length-1; i>0; i--) {
+	        		 int j=arr[i];
+	        		 arr[i]=arr[i-1];
+	        		 arr[i-1]=j;
+	        	 }
+	        	 k--;
+	         }
+	         System.out.print(Arrays.toString(arr));
+	}
+}
+
+
+
+2)
+Coin Game
+Raman was playing a game, he starts with x coins. Now in every step, he wins and loses
+and he has to get the money or pay the money as needed. He came in contact with a
+psychic who can see the future and the Psychic predicted the outcomes after each step.
+Now Raman wants to start the game with the minimum wage where he doesn’t run out of
+money. Help Raman to find what money he should start with. The only rule to keep playing
+is not going in a credit situation.
+Input Format:
+First line with n, number of steps in the game
+Next n lines, n integers denoting outcomes of every game. Positive means winning and
+negative means losing that money.
+Output Format:
+One single integer denoting the minimum amount to start with
+Constraints:
+Number of steps<=10^9
+-1000<=Money needed in each step<=1000
+Sample Input:
+4
+2
+-9
+15
+2
+Sample Output:
+7
+Explanation:
+If he starts with 7 rupees, then after steps : 7 ->9 -> 0-> 15 -> 17
+
+
+Ans :-
+
+
+package p;
+import java.util.*;
+public class P implements implement {
+	static Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) {
+	         int [] arr= {2,-9,15,2};
+	            int num=0;
+	              int i=0; 
+	                while(true) {
+	                	num=i;
+	                	for(int j=0; j<arr.length; j++) {
+	                		if(num>=0) {
+	                			 num=num+arr[j];
+	                			 
+	                		}else {
+	                			  num=num-arr[j];
+	                			 
+	                		}	 
+	                	}
+	                if(num>0) {
+	                	System.out.print(i);
+	                	break;
+	                }
+	                i++;
+	              }
+	}
+}
+
+
+3)
+Corona for Computer
+Problem Statement :
+Every decimal number can be changed into its binary form. Suppose your computer has it’s
+own CoronaVirus, that eats binary digits from the right side of a number. Suppose a virus
+has 6 spikes, it will eat up 6 LSB binary digits in your numbers.
+You will have a bunch of numbers, and your machine will have a virus with n spikes, you
+have to calculate what will be the final situation of the final numbers.
+Input Format:
+First line, a single Integer N
+Second line N space separated integers of the bunch of values as array V
+Third line a single integer n, the number of spikes in Corona for Computer
+Output Format:
+Single N space separated integers denoting the final situation with the array v.
+Sample Input:
+5
+1 2 3 4 5
+2
+Output:
+0 0 0 1 1
+Explanation:
+5 is 101 in binary, when you cut the last two binary digits, its 1.
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement {
+	
+	   public static String binary(int n) {
+		   String s="";
+		         for(int i=63; i>=0; i--) {
+		        	     s+=n>>i&1;
+		         }
+		         return s;
+	   }
+	
+	static Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) {
+	          int [] arr= {1 ,2, 3, 4, 5};
+	            int n=sc.nextInt();
+	            String z="";
+	            for(int i=0; i<arr.length; i++) {
+	            	  String x=binary(arr[i]);
+	            	 
+	            	     z+=x.charAt((x.length()-1)-n);
+	            }
+	            System.out.print(z);
+	}
+}
+
+
+
+4)
+the product of 1 * 2 * 3 = 6
+Approach:
+To solve this problem efficiently, we can use two auxiliary arrays: leftProducts and
+rightProducts. These arrays will store the products of elements to the left and right of each
+element, respectively.
+a)Compute leftProducts:
+Initialize an array leftProducts of the same length as nums and set leftProducts[0] = 1 since
+there are no elements to the left of the first element.
+Iterate from left to right through nums, updating leftProducts[i] as the product of all elements
+to the left of nums[i].
+b)Compute rightProducts:
+Initialize an array rightProducts of the same length as nums and set rightProducts[n-1] = 1
+since there are no elements to the right of the last element.
+Iterate from right to left through nums, updating rightProducts[i] as the product of all
+elements to the right of nums[i].
+c)Compute the final result output:
+For each index i, the product of all elements except nums[i] is given by leftProducts[i] *
+rightProducts[i].
+Populate the output array accordingly.
+
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement {
+	static Scanner sc = new Scanner(System.in);
+	      public static int [] left_right_Product(int [] arr) {
+	    	  
+	    	  int [] arr1 =new int[arr.length];
+	    	       int leftP=1;
+	    	       for(int i=0; i<arr1.length; i++) { 
+	    	    	     arr1[i]=leftP;
+	    	    	     leftP*=arr[i];
+	    	       }
+	    	       int rightP=1;
+	    	       for(int i=arr.length-1; i>=0; i--) {
+	     	    	     arr[i]*=rightP;
+	     	    	       arr1[i]*=arr[i];
+	     	       }
+	    	      return arr1;
+	      }
+	public static void main(String[] args) {
+	    int [] arr= {1,2,3,4};
+	    arr=left_right_Product(arr);
+	    System.out.print(Arrays.toString(arr));
+	}
+}
+
+
+5)
+Problem: Find Peak Element
+Problem Description:
+A peak element in an array is an element that is greater than or equal to its neighbors. Given
+an input array nums, find a peak element and return its index. If there are multiple peaks,
+return any peak index.
+Example:
+Input: [1,2,3,1]
+Output: 2
+Explanation: In this example, 3 is a peak element, and its index is 2
+
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement {
+	static Scanner sc = new Scanner(System.in);
+	      public static int peak(int [] arr) {
+	    	         for(int i=1 ;i<arr.length-1; i++) {
+	    	        	   if(arr[i]>=arr[i-1]&&arr[i]>=arr[i+1]) {
+	    	        		   return i;
+	    	        	   }
+	    	         }
+	    	 return 0;
+	      }
+	public static void main(String[] args) {
+	    int [] arr= {1,2,3,1};
+	     int p=peak(arr);
+	     System.out.print(arr[p]);
+	}
+}
+
+
+7)
+)Given a 2D array, print it in spiral form. See the following examples.
+NOTE:- Please comment down the code in other languages as well below .
+Input:
+1 2 3 4
+5 6 7 8
+9 10 11 12
+13 14 15 16
+Output:
+1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement {
+	static Scanner sc = new Scanner(System.in);
+	      
+	public static void main(String[] args) {
+	      int [][] arr= {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+	        int n=arr.length*arr.length;
+	        int r=0,c=0,rmax=arr.length-1,cmax=arr.length-1;
+	        while(n!=0) {
+	        	   for(int i=c; i<=cmax; i++) {
+	        		   n--;
+	        		   System.out.print(arr[r][i]+" ");
+	        	   }
+	        	   for(int i=r+1; i<=rmax; i++) {
+	        		   n--;
+	        		   System.out.print(arr[i][cmax]+" ");
+	        	   }
+	        	   for(int i=cmax-1; i>=c; i--) {
+	        		   n--;
+	        		   System.out.print(arr[rmax][i]+" ");
+	        	   }
+	        	   for(int i=rmax-1; i>r; i--) {
+	        		   n--;
+	        		   System.out.print(arr[i][c]+" ");
+	        	   }
+	        	   r++;
+	        	   c++;
+	        	   rmax--;
+	        	   cmax--;
+	   
+	        }    
+	}
+}
+
+
+
+9)
+)Problem: Set Matrix Zeroes
+Problem Description:
+Given a matrix matrix, modify it in-place such that if an element is 0, set its entire row and
+column to 0. Do it in such a way that modifies the matrix in constant space.
+Example:
+Input:
+[
+[1, 2, 3],
+[4, 0, 6],
+[7, 8, 9]
+]
+Output:
+[
+[1, 0, 3],
+[0, 0, 0],
+[7, 0, 9]
+]
+Explanation: In the input matrix, the element at position (1,1) is 0. Hence, its entire row and
+column are set to 0 in the output matrix
+
+Ans :-
+
+package p;
+import java.util.*;
+public class P implements implement {
+	static Scanner sc = new Scanner(System.in);
+	      
+	public static void main(String[] args) {
+	      int [][] arr= {{1, 2, 3},{4, 0, 6},{7, 8, 9}};
+	      int f=0; 
+	        for(int i=0; i<arr.length; i++) {
+	        	for(int j=0; j<arr[i].length; j++) {
+	        		   if(arr[i][j]==0) {
+	        			   for(int k=0; k<arr.length; k++) {
+	        				   arr[i][k]=0;
+	        				   arr[k][i]=0;
+	        				   
+	        			   }
+	        			   f=1;
+	        			   break;
+	        		   }
+	        		   
+	        		   
+	        	}
+	        	if(f==1) {
+	        		break;
+	        	}
+	        }
+	        for(int i=0; i<arr.length; i++) {
+	        	for(int j=0; j<arr[i].length; j++) {
+	        		   System.out.print(arr[i][j]+" ");
+	        	}
+	        	System.out.println();
+	        }
+	         
+	}
+}
+
+
+
